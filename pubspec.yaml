@@ -1,0 +1,117 @@
+name: flutter_app_template
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # App State
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+
+  # Ephemeral State
+  flutter_hooks: ^0.20.4
+  hooks_riverpod: ^2.4.9
+
+  # ナビゲーション
+  go_router: ^13.0.1
+
+  # Theme
+  theme_tailor: ^2.1.0
+  theme_tailor_annotation: ^2.1.0
+
+  # UIヘルパー & ユーティリティ
+  flutter_screenutil: ^5.9.0
+  cached_network_image: ^3.3.1
+  screen_protector: ^1.4.2
+  visibility_detector: ^0.4.0+2
+
+  # UIコンポーネント & テスト
+  widgetbook: ^3.7.1
+  widgetbook_annotation: ^3.1.0
+
+  # 画像 & ファイル
+  image_picker: ^1.0.7
+  path: ^1.8.3
+  flutter_image_compress: ^2.1.0
+  exif: ^3.3.0
+
+  # HTTP通信 & API
+  retrofit: ^4.0.3
+  dio: ^5.4.0
+
+  # シリアライゼーション & コード生成
+  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.1
+
+  # ローカルDB
+  shared_preferences: ^2.2.2
+  flutter_secure_storage: ^9.0.0
+  isar: ^3.0.0
+  isar_flutter_libs: ^3.0.0
+  path_provider: ^2.0.11
+
+  # 多言語対応
+  intl: ^0.18.1
+  slang: ^3.29.0
+  slang_flutter: ^3.29.0
+  flutter_localization: ^0.2.0
+  flutter_localizations:
+    sdk: flutter
+
+  # アプリの初期画面 & アイコン
+  flutter_native_splash: ^2.3.10
+  flutter_launcher_icons: ^0.13.1
+
+  # ロギング
+  logger: ^2.0.2+1
+
+  # Dart・Flutter拡張
+  collection: ^1.18.0
+  multi_async_value: ^0.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.8
+  cider: ^0.2.5
+  riverpod_generator: ^2.3.9
+  riverpod_lint: ^2.3.7
+  go_router_builder: ^2.4.1
+  widgetbook_generator: ^3.7.0
+  retrofit_generator: ^8.0.6
+  json_serializable: ^6.7.1
+  freezed: ^2.4.6
+  slang_build_runner: ^3.29.0
+  isar_generator: ^3.0.0
+
+flutter_native_splash:
+  color: '#add8e6'
+  image: 'assets/images/splash.png'
+  color_dark: '#262626'
+  image_dark: 'assets/images/splash.png'
+  fullscreen: true
+  android_12:
+    icon_background_color: '#add8e6'
+    image: 'assets/images/splash.png'
+    icon_background_color_dark: '#262626'
+    image_dark: 'assets/images/splash.png'
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+     - assets/images/
+
+# riverpod_lintとisar_generatorが依存しているanalyzerが競合しているため
+dependency_overrides:
+  analyzer: ^6.0.0
