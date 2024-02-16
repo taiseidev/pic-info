@@ -71,8 +71,8 @@ class HomePage extends HookConsumerWidget {
             Text(Strings.greetingWithName('テスト')),
             RepaintBoundary(
               child: CommonButton(
-                text: 'テストボタン',
-                onPressed: () {},
+                text: 'Sign Out',
+                onTap: () {},
               ),
             ),
             RepaintBoundary(
