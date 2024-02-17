@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../providers/navigator_key.dart';
-import '../ui/go_router_sample/first_go_router_sample_page.dart';
-import '../ui/go_router_sample/fourth_go_router_sample_page.dart';
-import '../ui/go_router_sample/second_go_router_sample_page.dart';
-import '../ui/go_router_sample/third_go_router_sample_page.dart';
-import '../ui/home/home_page.dart';
-import '../ui/image_sample/image_sample_page.dart';
-import '../ui/pagination/page_based_view.dart';
-import '../ui/post/post_detail/post_detail_page.dart';
-import '../ui/post/post_page.dart';
+import '../../../providers/navigator_key.dart';
+import '../../ui/go_router_sample/first_go_router_sample_page.dart';
+import '../../ui/go_router_sample/fourth_go_router_sample_page.dart';
+import '../../ui/go_router_sample/second_go_router_sample_page.dart';
+import '../../ui/go_router_sample/third_go_router_sample_page.dart';
+import '../../ui/image_sample/image_sample_page.dart';
+import '../../ui/main/main_page.dart';
+import '../../ui/pagination/page_based_view.dart';
+import '../../ui/post/post_detail/post_detail_page.dart';
+import '../../ui/post/post_page.dart';
+import '../routes/branch/home_shell_branch.dart';
+import '../routes/branch/setting_shell_branch.dart';
 import 'extra_codec.dart';
 
 part 'router.g.dart';
@@ -21,18 +23,29 @@ GoRouter goRouter(GoRouterRef ref) => GoRouter(
       navigatorKey: ref.watch(navigatorKeyProvider),
       extraCodec: const ExtraCodec(),
       debugLogDiagnostics: true,
-      initialLocation: '/',
+      initialLocation: '/home',
       routes: $appRoutes,
     );
 
-@TypedGoRoute<HomeRoute>(
-  path: '/',
+// メインとなるタブのルート
+@TypedStatefulShellRoute<MainShellRouteData>(
+  branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[
+    homeStatefulShellBranch,
+    // uploadStatefulShellBranch,
+    settingStatefulShellBranch,
+  ],
 )
-class HomeRoute extends GoRouteData {
-  const HomeRoute();
+// メインシェルルートの状態
+class MainShellRouteData extends StatefulShellRouteData {
+  const MainShellRouteData();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const HomePage();
+  Widget builder(
+    BuildContext context,
+    GoRouterState state,
+    StatefulNavigationShell navigationShell,
+  ) =>
+      MainPage(navigationShell: navigationShell);
 }
 
 @TypedGoRoute<ImageSampleRoute>(

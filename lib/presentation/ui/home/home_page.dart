@@ -8,8 +8,8 @@ import '../../../extensions/int_extension.dart';
 import '../../../extensions/widget_ref_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../providers/home/get_sample_int_provider.dart';
+import '../../navigation/router/router.dart';
 import '../../res/strings.dart';
-import '../../router/router.dart';
 import '../../widget/button/common_button.dart';
 import 'home_controller.dart';
 

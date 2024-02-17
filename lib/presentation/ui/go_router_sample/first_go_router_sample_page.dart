@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../router/router.dart';
+import '../../navigation/router/router.dart';
 
 enum SampleEnum { enum1, enum2 }
 

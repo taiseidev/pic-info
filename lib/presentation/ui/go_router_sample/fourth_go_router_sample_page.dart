@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../router/router.dart';
+import '../../navigation/router/router.dart';
 import 'first_go_router_sample_page.dart';
 
 class FourthGoRouterSamplePage extends StatelessWidget {

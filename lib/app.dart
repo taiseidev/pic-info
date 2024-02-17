@@ -5,8 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'constants/size_constants.dart';
 import 'i18n/strings.g.dart';
+import 'presentation/navigation/router/router.dart';
 import 'presentation/res/theme/theme.dart';
-import 'presentation/router/router.dart';
 import 'providers/loading_notifier.dart';
 import 'providers/scaffold_messenger_key.dart';
 

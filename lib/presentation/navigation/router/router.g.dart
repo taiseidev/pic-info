@@ -7,7 +7,7 @@ part of 'router.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $homeRoute,
+      $mainShellRouteData,
       $imageSampleRoute,
       $pageBasedViewRoute,
       $postSampleRoute,
@@ -15,16 +15,56 @@ List<RouteBase> get $appRoutes => [
       $secondGoRouterSampleRoute,
     ];
 
-RouteBase get $homeRoute => GoRouteData.$route(
-      path: '/',
-      factory: $HomeRouteExtension._fromState,
+RouteBase get $mainShellRouteData => StatefulShellRouteData.$route(
+      factory: $MainShellRouteDataExtension._fromState,
+      branches: [
+        StatefulShellBranchData.$branch(
+          routes: [
+            GoRouteData.$route(
+              path: '/home',
+              factory: $HomePageRouteExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          routes: [
+            GoRouteData.$route(
+              path: '/setting',
+              factory: $SettingPageRouteExtension._fromState,
+            ),
+          ],
+        ),
+      ],
     );
 
-extension $HomeRouteExtension on HomeRoute {
-  static HomeRoute _fromState(GoRouterState state) => const HomeRoute();
+extension $MainShellRouteDataExtension on MainShellRouteData {
+  static MainShellRouteData _fromState(GoRouterState state) =>
+      const MainShellRouteData();
+}
+
+extension $HomePageRouteExtension on HomePageRoute {
+  static HomePageRoute _fromState(GoRouterState state) => const HomePageRoute();
 
   String get location => GoRouteData.$location(
-        '/',
+        '/home',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $SettingPageRouteExtension on SettingPageRoute {
+  static SettingPageRoute _fromState(GoRouterState state) =>
+      const SettingPageRoute();
+
+  String get location => GoRouteData.$location(
+        '/setting',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -324,7 +364,7 @@ T? _$convertMapValue<T>(
 // RiverpodGenerator
 // **************************************************************************
 
-String _$goRouterHash() => r'4f5e2f11e6b6779bbb12a92b0392102966853cd1';
+String _$goRouterHash() => r'7b761ff400858364fbbc0d0f126e984bff72a908';
 
 /// See also [goRouter].
 @ProviderFor(goRouter)
