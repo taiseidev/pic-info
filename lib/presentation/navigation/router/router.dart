@@ -12,6 +12,7 @@ import '../../ui/main/main_page.dart';
 import '../../ui/pagination/page_based_view.dart';
 import '../../ui/post/post_detail/post_detail_page.dart';
 import '../../ui/post/post_page.dart';
+import '../../ui/upload/upload_page.dart';
 import '../routes/branch/home_shell_branch.dart';
 import '../routes/branch/setting_shell_branch.dart';
 import 'extra_codec.dart';
@@ -31,7 +32,6 @@ GoRouter goRouter(GoRouterRef ref) => GoRouter(
 @TypedStatefulShellRoute<MainShellRouteData>(
   branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[
     homeStatefulShellBranch,
-    // uploadStatefulShellBranch,
     settingStatefulShellBranch,
   ],
 )
@@ -46,6 +46,16 @@ class MainShellRouteData extends StatefulShellRouteData {
     StatefulNavigationShell navigationShell,
   ) =>
       MainPage(navigationShell: navigationShell);
+}
+
+@TypedGoRoute<UploadPageRoute>(
+  path: '/upload',
+)
+class UploadPageRoute extends GoRouteData {
+  const UploadPageRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) => const UploadPage();
 }
 
 @TypedGoRoute<ImageSampleRoute>(

@@ -30,6 +30,7 @@ dependencies:
   cached_network_image: ^3.3.1
   screen_protector: ^1.4.2
   visibility_detector: ^0.4.0+2
+  flutter_animate: ^4.5.0
 
   # UIコンポーネント & テスト
   widgetbook: ^3.7.1

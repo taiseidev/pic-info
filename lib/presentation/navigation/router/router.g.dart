@@ -8,6 +8,7 @@ part of 'router.dart';
 
 List<RouteBase> get $appRoutes => [
       $mainShellRouteData,
+      $uploadPageRoute,
       $imageSampleRoute,
       $pageBasedViewRoute,
       $postSampleRoute,
@@ -65,6 +66,29 @@ extension $SettingPageRouteExtension on SettingPageRoute {
 
   String get location => GoRouteData.$location(
         '/setting',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $uploadPageRoute => GoRouteData.$route(
+      path: '/upload',
+      factory: $UploadPageRouteExtension._fromState,
+    );
+
+extension $UploadPageRouteExtension on UploadPageRoute {
+  static UploadPageRoute _fromState(GoRouterState state) =>
+      const UploadPageRoute();
+
+  String get location => GoRouteData.$location(
+        '/upload',
       );
 
   void go(BuildContext context) => context.go(location);

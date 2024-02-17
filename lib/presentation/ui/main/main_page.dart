@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../navigation/router/router.dart';
+
 class MainPage extends StatelessWidget {
   const MainPage({
     required this.navigationShell,
@@ -13,19 +15,33 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
-        destinations: const [
-          NavigationDestination(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey,
+        onPressed: () async => const UploadPageRoute().push<void>(context),
+        child: const Icon(Icons.upload, color: Colors.white),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: navigationShell.currentIndex,
+        onTap: _goBranch,
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 12,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 10,
+        ),
+        items: const [
+          BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'home',
+            label: 'Home',
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'settings',
+            label: 'Setting',
           ),
         ],
-        onDestinationSelected: _goBranch,
       ),
     );
   }

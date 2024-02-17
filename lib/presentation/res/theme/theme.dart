@@ -8,6 +8,10 @@ ThemeData getLightThemeData() {
     brightness: Brightness.light,
   );
   return base.copyWith(
+    appBarTheme: const AppBarTheme(
+      // Androidだとデフォルトで左寄り
+      centerTitle: true,
+    ),
     extensions: _getLightThemeExtension(),
   );
 }
@@ -18,6 +22,9 @@ ThemeData getDarkThemeData() {
     brightness: Brightness.dark,
   );
   return base.copyWith(
+    appBarTheme: const AppBarTheme(
+      centerTitle: true,
+    ),
     extensions: _getDarkThemeExtension(),
   );
 }
