@@ -79,7 +79,31 @@ class HomePage extends HookConsumerWidget {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                await showModalBottomSheet<void>(
+                  context: context,
+                  useRootNavigator: true,
+                  builder: (context) => SizedBox(
+                    width: size.width,
+                    child: const Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: 24, left: 24),
+                          child: Text(
+                            '検索条件',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
               icon: const Icon(Icons.search),
             ),
           ],
@@ -95,6 +119,7 @@ class HomePage extends HookConsumerWidget {
             ),
             itemBuilder: (context, index) {
               return ImageTitleDateCard(
+                index: index,
                 title: 'Side Kick Sneaker',
                 date: '2023/06/21',
                 width: size.width,

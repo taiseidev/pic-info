@@ -24,6 +24,12 @@ RouteBase get $mainShellRouteData => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/home',
               factory: $HomePageRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'home-detail',
+                  factory: $HomeDetailRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -48,6 +54,28 @@ extension $HomePageRouteExtension on HomePageRoute {
 
   String get location => GoRouteData.$location(
         '/home',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $HomeDetailRouteExtension on HomeDetailRoute {
+  static HomeDetailRoute _fromState(GoRouterState state) => HomeDetailRoute(
+        index: int.parse(state.uri.queryParameters['index']!),
+      );
+
+  String get location => GoRouteData.$location(
+        '/home/home-detail',
+        queryParams: {
+          'index': index.toString(),
+        },
       );
 
   void go(BuildContext context) => context.go(location);

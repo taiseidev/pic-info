@@ -15,6 +15,7 @@ import '../../ui/post/post_page.dart';
 import '../../ui/upload/upload_page.dart';
 import '../routes/branch/home_shell_branch.dart';
 import '../routes/branch/setting_shell_branch.dart';
+import '../routes/route/home/home_detail_route.dart';
 import 'extra_codec.dart';
 
 part 'router.g.dart';
