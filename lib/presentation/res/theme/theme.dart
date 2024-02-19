@@ -4,13 +4,21 @@ import 'extensions/common_button_theme.dart';
 
 ThemeData getLightThemeData() {
   final base = ThemeData(
-    useMaterial3: true,
+    useMaterial3: false,
     brightness: Brightness.light,
   );
   return base.copyWith(
     appBarTheme: const AppBarTheme(
+      color: Colors.white,
       // Androidだとデフォルトで左寄り
       centerTitle: true,
+    ),
+    tabBarTheme: const TabBarTheme(
+      labelColor: Colors.teal,
+      labelStyle: TextStyle(
+        fontWeight: FontWeight.bold,
+      ),
+      indicatorColor: Colors.teal,
     ),
     extensions: _getLightThemeExtension(),
   );
@@ -18,7 +26,7 @@ ThemeData getLightThemeData() {
 
 ThemeData getDarkThemeData() {
   final base = ThemeData(
-    useMaterial3: true,
+    useMaterial3: false,
     brightness: Brightness.dark,
   );
   return base.copyWith(

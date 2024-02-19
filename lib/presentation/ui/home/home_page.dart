@@ -67,6 +67,7 @@ class HomePage extends HookConsumerWidget {
             '写真一覧',
             style: TextStyle(
               fontWeight: FontWeight.bold,
+              color: Colors.black,
               fontSize: 16,
             ),
           ),
@@ -104,7 +105,10 @@ class HomePage extends HookConsumerWidget {
                   ),
                 );
               },
-              icon: const Icon(Icons.search),
+              icon: const Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
             ),
           ],
         ),
