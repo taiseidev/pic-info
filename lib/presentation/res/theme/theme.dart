@@ -8,7 +8,15 @@ ThemeData getLightThemeData() {
     brightness: Brightness.light,
   );
   return base.copyWith(
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(
+        color: Colors.black,
+      ),
+      titleTextStyle: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w900,
+      ),
       color: Colors.white,
       // Androidだとデフォルトで左寄り
       centerTitle: true,
