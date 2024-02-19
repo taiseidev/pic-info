@@ -29,60 +29,72 @@ class SettingPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: _Title(title: '基本情報'),
               ),
-              const _Tile(
+              _Tile(
                 title: 'テーマ設定',
-                icon: Icons.palette, // アイコン変更
+                icon: Icons.palette,
+                trailing: Switch(
+                  value: true,
+                  onChanged: (value) {},
+                ),
               ),
-              const _Tile(
-                title: 'パスワード設定',
-                icon: Icons.lock_outline, // アイコン変更
-              ),
-              const _Tile(
+              _Tile(
                 title: '通知設定',
-                icon: Icons.notifications_none, // アイコン変更
+                icon: Icons.notifications_none,
+                trailing: Switch(
+                  value: true,
+                  onChanged: (value) {},
+                ),
               ),
-              const _Tile(
+              _Tile(
                 title: 'プライバシーポリシー',
-                icon: Icons.privacy_tip_outlined, // アイコン変更
+                icon: Icons.privacy_tip_outlined,
+                onTap: () {},
               ),
-              const _Tile(
+              _Tile(
                 title: '利用規約',
-                icon: Icons.description_outlined, // アイコン変更
+                icon: Icons.description_outlined,
+                onTap: () {},
               ),
               const SizedBox(height: 16),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: _Title(title: 'データ管理'),
               ),
-              const _Tile(
+              _Tile(
                 title: 'データ移行・復元',
-                icon: Icons.sync_alt, // アイコン変更
+                icon: Icons.sync_alt,
+                onTap: () {},
               ),
               const _Tile(
                 title: 'データ使用量',
-                icon: Icons.data_usage, // アイコン変更
+                icon: Icons.data_usage,
+                trailing: Text('2.12GB'),
               ),
               const SizedBox(height: 16),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: _Title(title: 'セキュリティ'),
               ),
-              const _Tile(
+              _Tile(
                 title: 'パスワード設定',
-                icon: Icons.lock_outline, // アイコン変更
+                icon: Icons.lock_outline,
+                trailing: const Icon(Icons.more_vert),
+                onTap: () {},
               ),
               const SizedBox(height: 16),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: _Title(title: 'その他'),
               ),
-              const _Tile(
+              _Tile(
                 title: 'お問い合わせ',
-                icon: Icons.contact_support_outlined, // アイコン変更
+                icon: Icons.contact_support_outlined,
+                onTap: () {},
               ),
-              const _Tile(
+              _Tile(
                 title: 'レビュー',
-                icon: Icons.rate_review, // アイコン変更
+                icon: Icons.rate_review,
+                onTap: () {},
               ),
               const SizedBox(height: 52),
               Padding(
@@ -104,7 +116,6 @@ class SettingPage extends StatelessWidget {
 class _Title extends StatelessWidget {
   const _Title({
     required this.title,
-    super.key,
   });
 
   final String title;
@@ -125,15 +136,19 @@ class _Tile extends StatelessWidget {
   const _Tile({
     required this.title,
     required this.icon,
+    this.onTap,
+    this.trailing = const Icon(Icons.arrow_forward),
   });
 
   final String title;
   final IconData icon;
+  final Widget trailing;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: onTap,
       leading: Container(
         width: 40,
         height: 40,
@@ -150,7 +165,7 @@ class _Tile extends StatelessWidget {
           fontSize: 14,
         ),
       ),
-      trailing: const Icon(Icons.arrow_forward),
+      trailing: trailing,
     );
   }
 }
